@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Hub - Global Scientific Database</title>
+    <link rel="stylesheet" href="css/styles_professional.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Initial Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <!-- Header -->
+        <header class="landing-header">
+            <div class="landing-header-container">
+                <div class="landing-logo">
+                    <i class="fas fa-flask"></i>
+                    <h1>Research Hub</h1>
+                </div>
+                <nav class="landing-nav">
+                    <button class="nav-btn" id="loginBtn">Login</button>
+                    <button class="nav-btn secondary" id="signupBtn">Sign Up</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="landing-main">
+            <main class="landing-content">
+                <div class="hero-section">
+                    <h2>Global Scientific Research Database</h2>
+                    <p class="hero-description">
+                        Your comprehensive platform for exploring scientific research, publications, 
+                        collaborations, and emerging trends in the global research community.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="hero-btn primary" id="heroLoginBtn">Get Started</button>
+                        <button class="hero-btn secondary">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- Platform Statistics Section -->
+                <div class="platform-stats">
+                    <h3>Platform Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">1,234</div>
+                                <div class="stat-label">Researchers</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">5,678</div>
+                                <div class="stat-label">Publications</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">892</div>
+                                <div class="stat-label">Collaborations</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">234</div>
+                                <div class="stat-label">Institutions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explore Features Section -->
+                <div class="explore-features">
+                    <h3>Explore Features</h3>
+                    <div class="explore-grid">
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Research Analytics</h4>
+                            <p>Track publications, citations, and research trends with interactive visualizations</p>
+                        </div>
+                        
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Author Networks</h4>
+                            <p>Explore researcher profiles, collaborations, and institutional partnerships</p>
+                        </div>
+                        
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4>Global Insights</h4>
+                            <p>Discover research patterns across countries, institutions, and topics</p>
+                        </div>
+                        
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Trending Topics</h4>
+                            <p>Stay updated with emerging research areas and scientific trends</p>
+                        </div>
+                        
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Collaborations</h4>
+                            <p>View global partnerships and collaborative research networks</p>
+                        </div>
+                        
+                        <div class="explore-card">
+                            <div class="explore-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Rich Database</h4>
+                            <p>Access comprehensive scientific publications and research data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-showcase">
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Advanced Analytics</h3>
+                            <p>Track publications, citations, and research trends with interactive visualizations and real-time data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Research Networks</h3>
+                            <p>Explore researcher profiles, collaborations, and institutional partnerships worldwide.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-highlight">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>AI-Powered Insights</h3>
+                            <p>Discover research patterns and emerging topics using advanced machine learning algorithms.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal" style="display: none;">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="social-login">
+                    <h3>Login with</h3>
+                    <div class="social-buttons">
+                        <button class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Continue with Google
+                        </button>
+                        <button class="social-btn github">
+                            <i class="fab fa-github"></i>
+                            Continue with GitHub
+                        </button>
+                        <button class="social-btn microsoft">
+                            <i class="fab fa-microsoft"></i>
+                            Continue with Microsoft
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="email-login">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Email or Username</label>
+                            <input type="text" id="username" name="username" required placeholder="Enter your email or username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter your password">
+                        </div>
+                        
+                        <button type="submit" class="login-btn">Sign In</button>
+                    </form>
+                </div>
+                
+                <div class="modal-footer">
+                    <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Paper Submission Modal -->
+    <div id="submitPaperModal" class="submit-paper-modal" style="display: none;">
+        <div class="modal-overlay" id="submitModalOverlay"></div>
+        <div class="submit-modal-content">
+            <div class="submit-modal-header">
+                <h2>Submit Research Paper</h2>
+                <button class="modal-close" id="submitModalClose">&times;</button>
+            </div>
+            
+            <div class="submit-modal-body">
+                <form id="submitPaperForm">
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paperTitle">Paper Title *</label>
+                                <input type="text" id="paperTitle" name="paperTitle" required placeholder="Enter your paper title">
+                            </div>
+                            <div class="form-group">
+                                <label for="paperAbstract">Abstract *</label>
+                                <textarea id="paperAbstract" name="paperAbstract" required placeholder="Brief summary of your research (200-500 words)" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Author Information -->
+                    <div class="form-section">
+                        <h3>Author Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="authorName">Your Name *</label>
+                                <input type="text" id="authorName" name="authorName" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorEmail">Email *</label>
+                                <input type="email" id="authorEmail" name="authorEmail" required placeholder="your.email@institution.edu">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="authorInstitution">Institution *</label>
+                                <input type="text" id="authorInstitution" name="authorInstitution" required placeholder="University or Research Institution">
+                            </div>
+                            <div class="form-group">
+                                <label for="authorCountry">Country *</label>
+                                <select id="authorCountry" name="authorCountry" required>
+                                    <option value="">Select Country</option>
+                                    <option value="USA">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="France">France</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="China">China</option>
+                                    <option value="India">India</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paper Details -->
+                    <div class="form-section">
+                        <h3>Paper Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="publicationYear">Publication Year *</label>
+                                <input type="number" id="publicationYear" name="publicationYear" required min="2000" max="2024" placeholder="2024">
+                            </div>
+                            <div class="form-group">
+                                <label for="journalName">Journal/Conference *</label>
+                                <input type="text" id="journalName" name="journalName" required placeholder="Journal or Conference Name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="researchField">Research Field *</label>
+                                <select id="researchField" name="researchField" required>
+                                    <option value="">Select Field</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Machine Learning">Machine Learning</option>
+                                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                    <option value="Data Science">Data Science</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Medicine">Medicine</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="paperType">Paper Type *</label>
+                                <select id="paperType" name="paperType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="Research Article">Research Article</option>
+                                    <option value="Review">Review</option>
+                                    <option value="Conference Paper">Conference Paper</option>
+                                    <option value="Thesis">Thesis</option>
+                                    <option value="Technical Report">Technical Report</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="keywords">Keywords *</label>
+                                <input type="text" id="keywords" name="keywords" required placeholder="Enter keywords separated by commas (e.g., machine learning, AI, neural networks)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="form-section">
+                        <h3>File Upload</h3>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="file-upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h4>Upload Your Paper</h4>
+                                <p>Drag and drop your PDF file here or click to browse</p>
+                                <p class="file-note">Accepted formats: PDF, DOC, DOCX (Max size: 10MB)</p>
+                                <input type="file" id="paperFile" name="paperFile" accept=".pdf,.doc,.docx" style="display: none;">
+                                <button type="button" class="browse-btn" id="browseBtn">Browse Files</button>
+                            </div>
+                            <div class="file-info" id="fileInfo" style="display: none;">
+                                <div class="file-details">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <div class="file-text">
+                                        <span class="file-name" id="fileName"></span>
+                                        <span class="file-size" id="fileSize"></span>
+                                    </div>
+                                    <button type="button" class="remove-file-btn" id="removeFileBtn">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Co-authors -->
+                    <div class="form-section">
+                        <h3>Co-authors (Optional)</h3>
+                        <div id="coauthorsContainer">
+                            <div class="coauthor-row">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Co-author Name" class="coauthor-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Co-author Email" class="coauthor-email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Institution" class="coauthor-institution">
+                                    </div>
+                                    <button type="button" class="remove-coauthor-btn" style="display: none;">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-coauthor-btn" id="addCoauthorBtn">+ Add Co-author</button>
+                    </div>
+
+                    <!-- Terms and Submit -->
+                    <div class="form-section">
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="termsAccepted" name="termsAccepted" required>
+                            <label for="termsAccepted">
+                                I confirm that I have the right to submit this paper and agree to the terms and conditions
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="cancel-btn" id="cancelSubmitBtn">Cancel</button>
+                            <button type="submit" class="submit-btn">Submit Paper</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard (Hidden until login) -->
+    <div id="mainDashboard" class="main-dashboard" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="header-logo">
+                    <i class="fas fa-flask"></i>
+                    <h1>Research Hub</h1>
+                </div>
+                <nav class="header-nav">
+                    <ul class="nav-list">
+                        <li><a href="#dashboard" class="nav-link active" data-page="dashboard">Dashboard</a></li>
+                        <li><a href="#authors" class="nav-link" data-page="authors">Authors</a></li>
+                        <li><a href="#papers" class="nav-link" data-page="papers">Papers</a></li>
+                        <li><a href="#institutions" class="nav-link" data-page="institutions">Institutions</a></li>
+                        <li><a href="#collaborations" class="nav-link" data-page="collaborations">Collaborations</a></li>
+                        <li><a href="#trends" class="nav-link" data-page="trends">Trends</a></li>
+                        <li><button class="submit-paper-btn" id="submitPaperBtn">Submit Paper</button></li>
+                    </ul>
+                </nav>
+                <div class="user-info">
+                    <span class="welcome-user">Welcome, <span id="currentUser">User</span></span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="page-section active">
+                <div class="page-header">
+                    <h2>Research Dashboard</h2>
+                    <p>Overview of research activities and publications</p>
+                </div>
+                
+                <!-- Stats Overview -->
+                <div class="hero-stats">
+                    <div class="hero-stat-card primary">
+                        <div class="hero-stat-content">
+                            <div class="hero-stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="hero-stat-info">
+                                <h3 class="hero-stat-value">1,234</h3>
+                                <p class="hero-stat-label">Researchers</p>
+                                <span class="hero-stat-change positive">+12.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-card secondary">
+                        <div class="hero-stat-content">
+                            <div class="hero-stat-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="hero-stat-info">
+                                <h3 class="hero-stat-value">5,678</h3>
+                                <p class="hero-stat-label">Publications</p>
+                                <span class="hero-stat-change positive">+23.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-card accent">
+                        <div class="hero-stat-content">
+                            <div class="hero-stat-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="hero-stat-info">
+                                <h3 class="hero-stat-value">234</h3>
+                                <p class="hero-stat-label">Institutions</p>
+                                <span class="hero-stat-change positive">+8.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-stat-card success">
+                        <div class="hero-stat-content">
+                            <div class="hero-stat-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="hero-stat-info">
+                                <h3 class="hero-stat-value">892</h3>
+                                <p class="hero-stat-label">Collaborations</p>
+                                <span class="hero-stat-change positive">+34.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="analytics-grid">
+                    <!-- Publications Chart -->
+                    <div class="analytics-card full-width">
+                        <div class="analytics-header">
+                            <h3>Publications by Year</h3>
+                            <div class="analytics-controls">
+                                <select class="period-selector">
+                                    <option value="year" selected>Last Year</option>
+                                    <option value="all">All Time</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="analytics-content">
+                            <canvas id="publicationsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Research Topics -->
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Research Topics</h3>
+                        </div>
+                        <div class="analytics-content">
+                            <canvas id="topicsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Top Institutions -->
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Top Institutions</h3>
+                        </div>
+                        <div class="analytics-content">
+                            <div class="institutions-ranking">
+                                <div class="institution-rank-item">
+                                    <div class="rank-number">1</div>
+                                    <div class="institution-info">
+                                        <h4>Stanford University</h4>
+                                        <p>United States</p>
+                                    </div>
+                                    <div class="institution-stats">
+                                        <span class="papers-count">1,234</span>
+                                        <span class="citations-count">45.6K</span>
+                                    </div>
+                                </div>
+                                <div class="institution-rank-item">
+                                    <div class="rank-number">2</div>
+                                    <div class="institution-info">
+                                        <h4>Tsinghua University</h4>
+                                        <p>China</p>
+                                    </div>
+                                    <div class="institution-stats">
+                                        <span class="papers-count">1,189</span>
+                                        <span class="citations-count">38.2K</span>
+                                    </div>
+                                </div>
+                                <div class="institution-rank-item">
+                                    <div class="rank-number">3</div>
+                                    <div class="institution-info">
+                                        <h4>Oxford University</h4>
+                                        <p>United Kingdom</p>
+                                    </div>
+                                    <div class="institution-stats">
+                                        <span class="papers-count">987</span>
+                                        <span class="citations-count">42.1K</span>
+                                    </div>
+                                </div>
+                                <div class="institution-rank-item">
+                                    <div class="rank-number">4</div>
+                                    <div class="institution-info">
+                                        <h4>MIT</h4>
+                                        <p>United States</p>
+                                    </div>
+                                    <div class="institution-stats">
+                                        <span class="papers-count">876</span>
+                                        <span class="citations-count">51.3K</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <div class="analytics-content">
+                            <div class="activity-feed">
+                                <div class="activity-feed-item publication">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>New Publication</h4>
+                                        <p>"Deep Learning Applications in Medical Image Analysis"</p>
+                                        <div class="activity-meta">
+                                            <span class="activity-author">Dr. Sarah Johnson</span>
+                                            <span class="activity-time">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-feed-item collaboration">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>New Collaboration</h4>
+                                        <p>AI Research Partnership between Stanford and MIT</p>
+                                        <div class="activity-meta">
+                                            <span class="activity-author">Multi-institution</span>
+                                            <span class="activity-time">5 hours ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Authors Section -->
+        <section id="authors" class="page-section">
+            <div class="page-header">
+                <h2>Research Authors</h2>
+                <p>Explore researchers and their contributions</p>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-group">
+                    <input type="text" id="authorSearch" placeholder="Search authors..." class="search-input">
+                    <select id="institutionFilter" class="filter-select">
+                        <option value="">All Institutions</option>
+                        <option value="University of Mysore">University of Mysore</option>
+                        <option value="JSS Science and Technology University">JSS STU</option>
+                        <option value="Sri Jayachamarajendra College of Engineering">SJCE</option>
+                        <option value="National Institute of Engineering">NIE</option>
+                    </select>
+                    <select id="countryFilter" class="filter-select">
+                        <option value="">All Countries</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="authors-grid" id="authorsGrid">
+                <!-- Authors will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Papers Section -->
+        <section id="papers" class="page-section">
+            <div class="page-header">
+                <h2>Research Papers</h2>
+                <p>Browse scientific publications and research papers</p>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-group">
+                    <input type="text" id="paperSearch" placeholder="Search papers..." class="search-input">
+                    <select id="yearFilter" class="filter-select">
+                        <option value="">All Years</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <select id="topicFilter" class="filter-select">
+                        <option value="">All Topics</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="AI">Artificial Intelligence</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="IoT">Internet of Things</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="papers-grid" id="papersGrid">
+                <!-- Papers will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Institutions Section -->
+        <section id="institutions" class="page-section">
+            <div class="page-header">
+                <h2>Research Institutions</h2>
+                <p>Leading universities and research organizations</p>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-group">
+                    <input type="text" id="institutionSearch" placeholder="Search institutions..." class="search-input">
+                    <select id="regionFilter" class="filter-select">
+                        <option value="">All Regions</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="North America">North America</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="institutions-grid" id="institutionsGrid">
+                <!-- Institutions will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Collaborations Section -->
+        <section id="collaborations" class="page-section">
+            <div class="page-header">
+                <h2>Research Collaborations</h2>
+                <p>Global partnerships and collaborative research networks</p>
+            </div>
+            
+            <div class="collaboration-network">
+                <!-- Collaboration visualization will be added here -->
+            </div>
+        </section>
+
+        <!-- Trends Section -->
+        <section id="trends" class="page-section">
+            <div class="page-header">
+                <h2>Research Trends</h2>
+                <p>Emerging topics and research patterns analysis</p>
+            </div>
+            
+            <div class="trends-analysis">
+                <!-- Trends visualization will be added here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Research Hub</h4>
+                <p>Global Scientific Research Database</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#authors">Authors</a></li>
+                    <li><a href="#papers">Papers</a></li>
+                    <li><a href="#institutions">Institutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>research@hub.com</p>
+                <p>+1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Research Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app_professional.js"></script>
+</body>
+</html>
