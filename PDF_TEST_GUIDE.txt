@@ -1,0 +1,98 @@
+===============================================================================
+PDF AUTO-EXTRACTION - QUICK TEST GUIDE
+===============================================================================
+
+SETUP COMPLETE! ✓
+-----------------
+✓ Packages installed (multer, pdf-parse)
+✓ Backend route configured (/pdf/extract)
+✓ Frontend UI ready
+✓ Form auto-population enabled
+
+
+HOW TO TEST:
+------------
+
+1. RESTART BACKEND SERVER
+   - Stop current server (Ctrl+C)
+   - Run: node server.js
+   - Wait for "Server running on port 5000"
+
+2. OPEN PAPERS PAGE
+   - Go to: http://localhost/research_collab_db/frontend/papers.html
+   - Login as admin (aksh)
+
+3. UPLOAD A PDF
+   - Scroll to "Submit New Paper" section
+   - Click "Choose PDF File" button
+   - Select any research paper PDF
+   - Wait 5-10 seconds
+
+4. VERIFY AUTO-FILL
+   After processing, you should see:
+   ✓ Title field auto-filled
+   ✓ Year field auto-filled
+   ✓ Citations field auto-filled (0 if not found)
+   ✓ Green success box showing extracted data
+   ✓ Authors, abstract, keywords displayed (if found)
+
+5. SUBMIT PAPER
+   - Review the auto-filled data
+   - Edit if needed
+   - Click "Add Paper" button
+   - Paper will be added to database
+
+
+WHAT GETS EXTRACTED:
+--------------------
+✓ Paper Title (required)
+✓ Publication Year (required)
+✓ Citation Count (defaults to 0)
+✓ Authors (shown in info box)
+✓ Abstract (shown in info box)
+✓ Keywords (shown in info box)
+
+
+TROUBLESHOOTING:
+----------------
+
+Issue: "Failed to extract data from PDF"
+Solutions:
+- Ensure PDF is text-based (not scanned image)
+- Check PDF is not password protected
+- Try a different PDF file
+- Check backend console for errors
+
+Issue: Some fields are empty
+Solutions:
+- PDF format may be non-standard
+- Manually enter missing data
+- Extraction works best with academic papers
+
+Issue: "No PDF file uploaded"
+Solutions:
+- Ensure file is .pdf format
+- Check file size is under 10MB
+- Try uploading again
+
+
+SUPPORTED PDF TYPES:
+--------------------
+✓ IEEE papers
+✓ ACM papers
+✓ Springer papers
+✓ Elsevier papers
+✓ ArXiv papers
+✓ Most journal papers
+✗ Scanned PDFs (images)
+✗ Password-protected PDFs
+
+
+NEXT STEPS:
+-----------
+After successful extraction:
+1. Review auto-filled data
+2. Edit if necessary
+3. Click "Add Paper"
+4. Paper appears in table below
+5. Admin can approve/reject if needed

@@ -1,0 +1,113 @@
+===============================================================================
+PDF AUTO-EXTRACTION FEATURE - INSTALLATION GUIDE
+===============================================================================
+
+FEATURE OVERVIEW:
+-----------------
+When adding a new paper, users can now upload a PDF file and the system will
+automatically extract:
+- Paper title
+- Publication year
+- Authors
+- Abstract
+- Keywords
+- Citation count (if mentioned)
+
+The extracted data will auto-fill the form fields.
+
+
+INSTALLATION STEPS:
+-------------------
+
+STEP 1: Install Required NPM Packages
+--------------------------------------
+Open terminal in backend folder and run:
+
+cd c:\xampp\htdocs\research_collab_db\backend
+npm install multer pdf-parse
+
+
+STEP 2: Restart Backend Server
+-------------------------------
+Stop the current server (Ctrl+C) and restart:
+
+node server.js
+
+You should see:
+- MySQL Connected
+- Server running on port 5000
+
+
+STEP 3: Test the Feature
+-------------------------
+1. Go to: http://localhost/research_collab_db/frontend/papers.html
+2. Scroll to "Submit New Paper" section
+3. You'll see a new "Upload PDF to Auto-Extract Data" section
+4. Click "Choose PDF File"
+5. Select a research paper PDF
+6. Wait for processing (5-10 seconds)
+7. Form fields will auto-fill with extracted data
+
+
+HOW IT WORKS:
+-------------
+1. User uploads PDF file
+2. Backend receives file via multer
+3. pdf-parse library extracts text from PDF
+4. Smart regex patterns extract:
+   - Title (first significant text block)
+   - Year (4-digit year pattern)
+   - Authors (name patterns)
+   - Abstract (text after "Abstract:" keyword)
+   - Keywords (text after "Keywords:" keyword)
+5. Extracted data sent back to frontend
+6. Form fields auto-populated
+
+
+SUPPORTED PDF FORMATS:
+----------------------
+- Standard academic papers
+- IEEE format
+- ACM format
+- Springer format
+- Elsevier format
+- ArXiv papers
+- Most journal papers
+
+Maximum file size: 10MB
+
+
+TROUBLESHOOTING:
+----------------
+
+Error: "Cannot find module 'multer'"
+Solution: Run: npm install multer pdf-parse
+
+Error: "Failed to extract data from PDF"
+Possible causes:
+- PDF is scanned image (not text-based)
+- PDF is encrypted/password protected
+- PDF format is non-standard
+Solution: Manually enter data or use text-based PDF
+
+Error: "File size must be less than 10MB"
+Solution: Compress PDF or use smaller file
+
+
+LIMITATIONS:
+------------
+- Works best with text-based PDFs
+- Scanned PDFs (images) won't work without OCR
+- Extraction accuracy depends on PDF structure
+- Some fields may need manual correction
+- Citation count may not be accurate (depends on paper content)
+
+
+FUTURE ENHANCEMENTS:
+--------------------
+- OCR support for scanned PDFs
+- DOI-based metadata fetching
+- Integration with Google Scholar API
+- Support for more file formats (DOCX, TXT)
+- Automatic author matching with database
+- Topic/keyword auto-tagging

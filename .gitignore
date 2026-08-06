@@ -1,0 +1,53 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+.env.local
+
+# Uploads / user-generated files
+uploads/
+backend/uploads/
+frontend/uploads/
+uploads/papers/
+
+# Build outputs
+dist/
+build/
+public/build/
+
+# Tests / coverage
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+
+# Databases
+*.sqlite
+*.sqlite3
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Keys and certs
+*.key
+*.pem
+*.crt
+
+# Temp / cache
+tmp/
+temp/
+.cache/

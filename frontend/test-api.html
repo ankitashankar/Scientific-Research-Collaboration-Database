@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test - Papers</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #fff; }
+        pre { background: #2a2a2a; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        button { padding: 10px 20px; margin: 10px 5px; cursor: pointer; }
+        .error { color: #ff6b6b; }
+        .success { color: #51cf66; }
+    </style>
+</head>
+<body>
+    <h1>Papers API Test</h1>
+    
+    <button onclick="testAPI()">Test GET /papers</button>
+    <button onclick="testAuth()">Test with Auth</button>
+    
+    <h2>Response:</h2>
+    <div id="status"></div>
+    <pre id="output">Click a button to test...</pre>
+
+    <script>
+        function testAPI() {
+            document.getElementById('status').innerHTML = '<span class="success">Loading...</span>';
+            fetch('http://localhost:5000/papers')
+                .then(r => {
+                    document.getElementById('status').innerHTML = 
+                        `<span class="success">Status: ${r.status} ${r.statusText}</span>`;
+                    return r.json();
+                })
+                .then(data => {
+                    document.getElementById('output').textContent = 
+                        JSON.stringify(data, null, 2);
+                    console.log('Papers:', data);
+                })
+                .catch(err => {
+                    document.getElementById('status').innerHTML = 
+                        `<span class="error">Error: ${err.message}</span>`;
+                    document.getElementById('output').textContent = err.stack;
+                });
+        }
+
+        function testAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('No token found. Please login first.');
+                return;
+            }
+            
+            document.getElementById('status').innerHTML = '<span class="success">Loading with auth...</span>';
+            fetch('http://localhost:5000/papers', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(r => {
+                    document.getElementById('status').innerHTML = 
+                        `<span class="success">Status: ${r.status} ${r.statusText}</span>`;
+                    return r.json();
+                })
+                .then(data => {
+                    document.getElementById('output').textContent = 
+                        JSON.stringify(data, null, 2);
+                    console.log('Papers with auth:', data);
+                    console.log('First paper has link?', data[0]?.paper_link);
+                })
+                .catch(err => {
+                    document.getElementById('status').innerHTML = 
+                        `<span class="error">Error: ${err.message}</span>`;
+                    document.getElementById('output').textContent = err.stack;
+                });
+        }
+    </script>
+</body>
+</html>

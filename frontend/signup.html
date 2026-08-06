@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — ResearchHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#2b4a3a; --primary2:#476b55; --text:#111111; --soft:#666666; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'Inter',sans-serif;
+            min-height:100vh;
+            background: 
+                linear-gradient(rgba(43, 74, 58, 0.8), rgba(43, 74, 58, 0.8)),
+                url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            display:grid;
+            place-items:center;
+            padding:18px;
+            color:var(--text);
+        }
+        .auth-shell{
+            width:min(1080px,100%);
+            background:#fff;
+            border-radius:24px;
+            display:grid;
+            grid-template-columns: 1.05fr .95fr;
+            overflow:hidden;
+            box-shadow:0 30px 60px rgba(0,0,0,0.3);
+        }
+        .auth-media{
+            min-height:640px;
+            background:
+              linear-gradient(130deg, rgba(43, 74, 58, 0.95), rgba(26, 47, 37, 0.9)),
+              url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color:#fff;
+            padding:50px 40px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:40px;
+        }
+        .auth-media h2{font-size:38px;line-height:1.2;letter-spacing:-.8px;font-weight:800;margin-top:15px;}
+        .auth-media p{color:rgba(255,255,255,0.85);margin-top:18px;line-height:1.65;font-size:16px;max-width:480px;}
+        .media-pill{display:inline-block;padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+        .media-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;}
+        .media-chip{padding:11px 18px;border-radius:12px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);font-size:13.5px;font-weight:600;border:1px solid rgba(255,255,255,.15);}
+        .auth-wrapper{padding:40px 50px}
+        .auth-brand { display:flex; align-items:center; gap:12px; margin-bottom:25px; }
+        .brand-icon { width:45px;height:45px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff; }
+        .brand-text span:first-child{display:block;font-weight:800;font-size:22px;color:var(--primary)}
+        .brand-text span:last-child{font-size:12px;color:var(--soft)}
+        .auth-card h1 {font-size:32px;font-weight:800;letter-spacing:-1px}
+        .subtitle {color:var(--soft);margin:10px 0 20px;font-size:15px}
+        .form-group { margin-bottom:15px; }
+        .form-group label { display:block;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;}
+        .input-wrap { position:relative; }
+        .input-wrap svg { position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#aaa; }
+        .input-wrap input { width:100%;background:#f9f9f9;border:1px solid #eee;border-radius:12px;padding:12px 15px 12px 45px;color:var(--text);outline:0;transition:.3s; }
+        .input-wrap input:focus { border-color:var(--primary); background:#fff; box-shadow:0 0 0 4px rgba(43, 74, 58, 0.1); }
+        .role-selector { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px; }
+        .role-option { display:none; }
+        .role-option + label { display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;padding:15px 10px;background:#f9f9f9;border:1px solid #eee;border-radius:15px;cursor:pointer;transition:.2s; }
+        .role-option + label .role-icon { font-size: 20px; }
+        .role-option + label .role-name { font-size:12px; font-weight:800; color:var(--primary); }
+        .role-option + label .role-desc { font-size:10px; color:var(--soft); }
+        .role-option:checked + label { border-color:var(--primary); background:rgba(43, 74, 58, 0.05); box-shadow: 0 0 0 4px rgba(43, 74, 58, 0.05); }
+        .btn-submit { width:100%;border:0;border-radius:12px;padding:15px;background:var(--primary);color:#fff;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:.3s;margin-top:10px; }
+        .btn-submit:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 10px 20px rgba(43, 74, 58, 0.2); }
+        .btn-submit:disabled { opacity:.65; cursor:not-allowed; transform:none; }
+        .auth-footer { text-align:center; margin-top:20px; font-size:14px; color:var(--soft); }
+        .auth-footer a { color:var(--primary); font-weight:700; text-decoration:none; }
+        .auth-footer a:hover { text-decoration:underline; }
+        .error-msg { background:rgba(239, 68, 68, 0.1);border:1px solid rgba(239, 68, 68, 0.2);border-radius:12px;padding:12px;font-size:14px;color:#ef4444;margin-bottom:15px;display:none; }
+        .success-msg { background:rgba(16, 185, 129, 0.1);border:1px solid rgba(16, 185, 129, 0.2);border-radius:12px;padding:12px;font-size:14px;color:#10b981;margin-bottom:15px;display:none; }
+        .form-label-row { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+        @media (max-width: 940px){ .auth-shell{grid-template-columns:1fr}.auth-media{min-height:280px}.auth-wrapper{padding:30px} }
+    </style>
+</head>
+<body>
+
+<div class="auth-shell">
+    <section class="auth-media">
+        <div>
+            <span class="media-pill">Create ResearchHub Account</span>
+            <h2>Start collaborating with your research community.</h2>
+            <p>Use your account to contribute papers, build collaboration links, and unlock analytics across institutions and topics.</p>
+            <div class="media-list">
+                <span class="media-chip">Authors & Institutions</span>
+                <span class="media-chip">Topics & Trends</span>
+                <span class="media-chip">Secure Role Access</span>
+            </div>
+        </div>
+    </section>
+<div class="auth-wrapper">
+
+    <div class="auth-brand">
+        <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="brand-text">
+            <span>ResearchDB</span>
+            <span>University Research Network</span>
+        </div>
+    </div>
+
+    <div class="auth-card">
+        <h1>Create account</h1>
+        <p class="subtitle">Join the research collaboration platform</p>
+
+        <div class="error-msg"   id="errorMsg"></div>
+        <div class="success-msg" id="successMsg"></div>
+
+        <form id="signupForm">
+            <div class="form-group">
+                <label>Username</label>
+                <div class="input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <input type="text" id="username" placeholder="e.g. dr_ravi" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <input type="password" id="password" placeholder="Min. 6 characters" required minlength="6">
+                </div>
+            </div>
+
+            <div class="form-label-row">Select your role</div>
+            <div class="role-selector">
+                <div>
+                    <input type="radio" name="role" id="role-admin" value="admin" class="role-option">
+                    <label for="role-admin">
+                        <div class="role-icon">🔑</div>
+                        <div class="role-name">Admin</div>
+                        <div class="role-desc">Full access</div>
+                    </label>
+                </div>
+                <div>
+                    <input type="radio" name="role" id="role-researcher" value="researcher" class="role-option" checked>
+                    <label for="role-researcher">
+                        <div class="role-icon">🔬</div>
+                        <div class="role-name">Researcher</div>
+                        <div class="role-desc">Read & write</div>
+                    </label>
+                </div>
+                <div>
+                    <input type="radio" name="role" id="role-viewer" value="viewer" class="role-option">
+                    <label for="role-viewer">
+                        <div class="role-icon">👁️</div>
+                        <div class="role-name">Viewer</div>
+                        <div class="role-desc">Read only</div>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                Create Account
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Sign in</a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    if (localStorage.getItem('rdb_token')) window.location.href = 'index.html';
+
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn      = document.getElementById('submitBtn');
+        const errEl    = document.getElementById('errorMsg');
+        const succEl   = document.getElementById('successMsg');
+        errEl.style.display = 'none';
+        succEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Creating account…';
+
+        const username = document.getElementById('username').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const role     = document.querySelector('input[name="role"]:checked').value;
+
+        try {
+            const res = await fetch('http://localhost:5000/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password, role })
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                errEl.textContent = data.message || 'Registration failed.';
+                errEl.style.display = 'block';
+            } else {
+                succEl.textContent = 'Account created! Redirecting to login…';
+                succEl.style.display = 'block';
+                setTimeout(() => window.location.href = 'login.html', 1800);
+            }
+        } catch {
+            errEl.textContent = 'Cannot connect to server. Is the backend running?';
+            errEl.style.display = 'block';
+        }
+
+        btn.disabled = false;
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Create Account`;
+    });
+</script>
+</body>
+</html>

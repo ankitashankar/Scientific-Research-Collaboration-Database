@@ -1,0 +1,90 @@
+===============================================================================
+COMPLETE FIX GUIDE - Paper Links Not Showing
+===============================================================================
+
+STEP 1: ADD MISSING COLUMNS TO DATABASE
+----------------------------------------
+1. Open phpMyAdmin (http://localhost/phpmyadmin)
+2. Select database: research_collaboration_db
+3. Click on "SQL" tab
+4. Copy and paste this SQL:
+
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS paper_link TEXT;
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'approved';
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS submitted_by INT;
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS submitted_at DATETIME;
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS approved_by INT;
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS approved_at DATETIME;
+ALTER TABLE Papers ADD COLUMN IF NOT EXISTS rejection_reason TEXT;
+
+UPDATE Papers SET status = 'approved' WHERE status IS NULL OR status = '';
+
+5. Click "Go" to execute
+
+
+STEP 2: POPULATE PAPER LINKS
+-----------------------------
+1. Still in phpMyAdmin SQL tab
+2. Open file: database/mysuru_research_db_with_links (1).sql
+3. Find and copy ALL lines from line 933 to 1325 (all UPDATE Papers SET paper_link = ... statements)
+4. Paste in phpMyAdmin SQL tab
+5. Click "Go" to execute
+
+
+STEP 3: VERIFY DATABASE
+------------------------
+Run this query in phpMyAdmin:
+
+SELECT paper_id, title, paper_link, status FROM Papers LIMIT 5;
+
+You should see:
+- paper_link column with URLs
+- status column with 'approved'
+
+
+STEP 4: RESTART BACKEND SERVER
+-------------------------------
+1. Stop the current backend server (Ctrl+C in terminal)
+2. Navigate to backend folder:
+   cd c:\xampp\htdocs\research_collab_db\backend
+
+3. Start server:
+   node server.js
+
+4. You should see:
+   MySQL Connected
+   Server running on port 5000
+
+
+STEP 5: CLEAR BROWSER CACHE
+----------------------------
+1. Open papers page
+2. Press Ctrl + Shift + Delete
+3. Select "Cached images and files"
+4. Click "Clear data"
+5. OR just press Ctrl + Shift + R to hard refresh
+
+
+STEP 6: TEST
+------------
+1. Go to: http://localhost/research_collab_db/frontend/papers.html
+2. You should see papers with "Link" buttons in the PAPER LINK column
+3. Click any "Link" button - it should open the paper in a new tab
+
+
+TROUBLESHOOTING
+---------------
+If still not working:
+
+1. Check browser console (F12 → Console tab)
+   - Look for any red errors
+   - Check what the API is returning
+
+2. Test API directly:
+   - Go to: http://localhost/research_collab_db/frontend/test-api.html
+   - Click "Test with Auth"
+   - Check if paper_link field exists in the response
+
+3. Check backend terminal for errors
+
+4. Verify MySQL is running in XAMPP Control Panel

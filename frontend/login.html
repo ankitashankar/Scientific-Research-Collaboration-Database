@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — ResearchHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#2b4a3a; --primary2:#476b55; --text:#111111; --soft:#666666; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'Inter',sans-serif;
+            min-height:100vh;
+            background: 
+                linear-gradient(rgba(43, 74, 58, 0.8), rgba(43, 74, 58, 0.8)),
+                url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            display:grid;
+            place-items:center;
+            padding:18px;
+            color:var(--text);
+        }
+        .auth-shell{
+            width:min(1040px,100%);
+            background:#fff;
+            border-radius:24px;
+            display:grid;
+            grid-template-columns: 1.05fr .95fr;
+            overflow:hidden;
+            box-shadow:0 30px 60px rgba(0,0,0,0.3);
+        }
+        .auth-media{
+            min-height:620px;
+            background:
+              linear-gradient(130deg, rgba(43, 74, 58, 0.95), rgba(26, 47, 37, 0.9)),
+              url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color:#fff;
+            padding:50px 40px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:40px;
+        }
+        .auth-media h2{font-size:38px;line-height:1.2;letter-spacing:-.8px;font-weight:800;margin-top:15px;}
+        .auth-media p{color:rgba(255,255,255,0.85);margin-top:18px;line-height:1.65;font-size:16px;max-width:480px;}
+        .media-pill{display:inline-block;padding:8px 15px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+        .media-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;}
+        .media-chip{padding:11px 18px;border-radius:12px;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);font-size:13.5px;font-weight:600;border:1px solid rgba(255,255,255,.15);}
+        .auth-wrapper{padding:50px}
+        .auth-brand { display:flex; align-items:center; gap:12px; margin-bottom:30px; }
+        .brand-icon { width:45px;height:45px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff; }
+        .brand-text span:first-child{display:block;font-weight:800;font-size:22px;color:var(--primary)}
+        .brand-text span:last-child{font-size:12px;color:var(--soft)}
+        .auth-card h1 {font-size:32px;font-weight:800;letter-spacing:-1px}
+        .subtitle {color:var(--soft);margin:10px 0 30px;font-size:15px}
+        .form-group { margin-bottom:20px; }
+        .form-group label { display:block;font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px;}
+        .input-wrap { position:relative; }
+        .input-wrap svg { position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#aaa; }
+        .input-wrap input { width:100%;background:#f9f9f9;border:1px solid #eee;border-radius:12px;padding:12px 15px 12px 45px;color:var(--text);outline:0;transition:.3s; }
+        .input-wrap input:focus { border-color:var(--primary); background:#fff; box-shadow:0 0 0 4px rgba(43, 74, 58, 0.1); }
+        .btn-submit { width:100%;border:0;border-radius:12px;padding:15px;background:var(--primary);color:#fff;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:.3s;margin-top:10px; }
+        .btn-submit:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 10px 20px rgba(43, 74, 58, 0.2); }
+        .btn-submit:disabled { opacity:.65; cursor:not-allowed; transform:none; }
+        .auth-footer { text-align:center; margin-top:25px; font-size:14px; color:var(--soft); }
+        .auth-footer a { color:var(--primary); font-weight:700; text-decoration:none; }
+        .auth-footer a:hover { text-decoration:underline; }
+        .error-msg { background:rgba(239, 68, 68, 0.1);border:1px solid rgba(239, 68, 68, 0.2);border-radius:12px;padding:12px;font-size:14px;color:#ef4444;margin-bottom:20px;display:none; }
+        .role-pills { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; padding-top:20px; border-top:1px solid #eee; }
+        .role-pill { padding:6px 12px;border-radius:30px;font-size:12px;background:#f4f7f5;color:var(--primary);font-weight:600; }
+        .role-pill-label { font-size:12px; font-weight:700; color:var(--soft); margin-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+        @media (max-width: 920px){ .auth-shell{grid-template-columns:1fr}.auth-media{min-height:300px}.auth-wrapper{padding:30px} }
+    </style>
+</head>
+<body>
+<div class="auth-shell">
+    <section class="auth-media">
+        <div>
+            <span class="media-pill">ResearchHub Platform</span>
+            <h2>Sign in to manage research data and collaboration insights.</h2>
+            <p>From one dashboard you can access papers, authors, institutions, network links, and analytics visualizations with role-based access.</p>
+            <div class="media-list">
+                <span class="media-chip">Papers & Topics</span>
+                <span class="media-chip">Collaboration Network</span>
+                <span class="media-chip">Citation Analytics</span>
+            </div>
+        </div>
+    </section>
+<div class="auth-wrapper">
+
+    <div class="auth-brand">
+        <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="brand-text">
+            <span>ResearchDB</span>
+            <span>University Research Network</span>
+        </div>
+    </div>
+
+    <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to your account to continue</p>
+
+        <div class="error-msg" id="errorMsg"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                </div>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                Sign In
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            Don't have an account? <a href="signup.html">Create one</a>
+        </div>
+
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid #eee;">
+            <p class="role-pill-label">Access levels</p>
+            <div class="role-pills">
+                <span class="role-pill admin">Admin — Full access</span>
+                <span class="role-pill researcher">Researcher — Read + Write</span>
+                <span class="role-pill viewer">Viewer — Read only</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    if (localStorage.getItem('rdb_token')) window.location.href = 'index.html';
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const errEl = document.getElementById('errorMsg');
+        errEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Signing in…';
+
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        try {
+            const res = await fetch('http://localhost:5000/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                errEl.textContent = data.message || 'Login failed.';
+                errEl.style.display = 'block';
+                btn.disabled = false;
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>Sign In`;
+                return;
+            }
+
+            localStorage.setItem('rdb_token', data.token);
+            localStorage.setItem('rdb_user', JSON.stringify(data.user));
+            window.location.href = 'index.html';
+        } catch {
+            errEl.textContent = 'Cannot connect to server. Is the backend running?';
+            errEl.style.display = 'block';
+            btn.disabled = false;
+            btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>Sign In`;
+        }
+    });
+</script>
+</body>
+</html>
